@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Savora | Table Reservation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/reservation.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Savora<span>.</span>
+            </a>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="reservation.html" class="active">
+                    Reservation
+                </a>
+                <a href="orders.html">Orders</a>
+            </nav>
+
+            <div class="nav-actions">
+
+                <button
+                    class="theme-btn"
+                    onclick="toggleTheme()">
+                    🌙
+                </button>
+
+                <a href="menu.html" class="cart-link">
+                    🛒
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <div class="header-content">
+
+            <p class="eyebrow">
+                DINE WITH US
+            </p>
+
+            <h1>
+                Reserve Your
+                <span>Perfect Table.</span>
+            </h1>
+
+            <p>
+                Choose your preferred date, time and table,
+                then confirm your reservation in just a few clicks.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESERVATION -->
+
+    <main class="reservation-container">
+
+        <!-- LEFT SIDE -->
+
+        <section class="reservation-card">
+
+            <div class="section-title">
+
+                <p>STEP 1</p>
+
+                <h2>
+                    Reservation Details
+                </h2>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="reservationDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="reservationDate"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="reservationTime">
+                        Time
+                    </label>
+
+                    <select id="reservationTime">
+
+                        <option value="">
+                            Select time
+                        </option>
+
+                        <option>12:00 PM</option>
+                        <option>12:30 PM</option>
+                        <option>01:00 PM</option>
+                        <option>01:30 PM</option>
+
+                        <option>07:00 PM</option>
+                        <option>07:30 PM</option>
+                        <option>08:00 PM</option>
+                        <option>08:30 PM</option>
+                        <option>09:00 PM</option>
+                        <option>09:30 PM</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="guestCount">
+                        Number of Guests
+                    </label>
+
+                    <select id="guestCount">
+
+                        <option value="1">
+                            1 Guest
+                        </option>
+
+                        <option value="2" selected>
+                            2 Guests
+                        </option>
+
+                        <option value="3">
+                            3 Guests
+                        </option>
+
+                        <option value="4">
+                            4 Guests
+                        </option>
+
+                        <option value="5">
+                            5 Guests
+                        </option>
+
+                        <option value="6">
+                            6 Guests
+                        </option>
+
+                        <option value="8">
+                            8 Guests
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Seating Preference
+                    </label>
+
+                    <select id="seatingPreference">
+
+                        <option>
+                            Any Table
+                        </option>
+
+                        <option>
+                            Window Side
+                        </option>
+
+                        <option>
+                            Indoor
+                        </option>
+
+                        <option>
+                            Outdoor
+                        </option>
+
+                        <option>
+                            Private
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLE SELECTION -->
+
+            <div class="table-section">
+
+                <div class="section-title">
+
+                    <p>STEP 2</p>
+
+                    <h2>
+                        Choose Your Table
+                    </h2>
+
+                </div>
+
+
+                <div class="table-legend">
+
+                    <span>
+                        <i class="available"></i>
+                        Available
+                    </span>
+
+                    <span>
+                        <i class="selected"></i>
+                        Selected
+                    </span>
+
+                    <span>
+                        <i class="reserved"></i>
+                        Reserved
+                    </span>
+
+                </div>
+
+
+                <div class="restaurant-layout">
+
+                    <div class="entrance">
+                        🚪 Entrance
+                    </div>
+
+
+                    <div class="table-grid">
+
+                        <button
+                            class="restaurant-table available-table"
+                            data-table="T01"
+                            data-seats="2"
+                            onclick="selectTable(this)">
+
+                            <strong>
+                                T01
+                            </strong>
+
+                            <small>
+                                2 Seats
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table reserved-table"
+                            data-table="T02"
+                            data-seats="2"
+                            disabled>
+
+                            <strong>
+                                T02
+                            </strong>
+
+                            <small>
+                                Reserved
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table available-table"
+                            data-table="T03"
+                            data-seats="4"
+                            onclick="selectTable(this)">
+
+                            <strong>
+                                T03
+                            </strong>
+
+                            <small>
+                                4 Seats
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table available-table"
+                            data-table="T04"
+                            data-seats="4"
+                            onclick="selectTable(this)">
+
+                            <strong>
+                                T04
+                            </strong>
+
+                            <small>
+                                4 Seats
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table reserved-table"
+                            data-table="T05"
+                            data-seats="6"
+                            disabled>
+
+                            <strong>
+                                T05
+                            </strong>
+
+                            <small>
+                                Reserved
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table available-table"
+                            data-table="T06"
+                            data-seats="6"
+                            onclick="selectTable(this)">
+
+                            <strong>
+                                T06
+                            </strong>
+
+                            <small>
+                                6 Seats
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table available-table"
+                            data-table="T07"
+                            data-seats="4"
+                            onclick="selectTable(this)">
+
+                            <strong>
+                                T07
+                            </strong>
+
+                            <small>
+                                4 Seats
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table reserved-table"
+                            data-table="T08"
+                            data-seats="2"
+                            disabled>
+
+                            <strong>
+                                T08
+                            </strong>
+
+                            <small>
+                                Reserved
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table available-table"
+                            data-table="T09"
+                            data-seats="8"
+                            onclick="selectTable(this)">
+
+                            <strong>
+                                T09
+                            </strong>
+
+                            <small>
+                                8 Seats
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="restaurant-table available-table"
+                            data-table="T10"
+                            data-seats="2"
+                            onclick="selectTable(this)">
+
+                            <strong>
+                                T10
+                            </strong>
+
+                            <small>
+                                2 Seats
+                            </small>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="restaurant-feature">
+
+                        <div>
+                            🌿
+                        </div>
+
+                        <span>
+                            Garden / Outdoor Area
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="selected-table">
+
+                    <span>
+                        Selected Table
+                    </span>
+
+                    <strong id="selectedTableText">
+                        No table selected
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+
+        <aside class="guest-card">
+
+            <div class="section-title">
+
+                <p>STEP 3</p>
+
+                <h2>
+                    Your Information
+                </h2>
+
+            </div>
+
+
+            <form id="reservationForm">
+
+                <div class="form-group">
+
+                    <label for="guestName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="guestName"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="guestPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="guestPhone"
+                        placeholder="Enter phone number"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="guestEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="guestEmail"
+                        placeholder="Enter email address">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="specialRequest">
+                        Special Request
+                    </label>
+
+                    <textarea
+                        id="specialRequest"
+                        rows="4"
+                        placeholder="Birthday, anniversary, window seat, etc.">
+                    </textarea>
+
+                </div>
+
+
+                <div class="reservation-summary">
+
+                    <h3>
+                        Reservation Summary
+                    </h3>
+
+                    <div>
+                        <span>Date</span>
+                        <strong id="summaryDate">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Time</span>
+                        <strong id="summaryTime">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Guests</span>
+                        <strong id="summaryGuests">
+                            2
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Table</span>
+                        <strong id="summaryTable">
+                            —
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="reserve-btn">
+
+                    Confirm Reservation
+                    →
+
+                </button>
+
+            </form>
+
+        </aside>
+
+    </main>
+
+
+    <!-- SUCCESS MODAL -->
+
+    <div
+        class="success-overlay"
+        id="successOverlay">
+
+        <div class="success-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Reservation Confirmed!
+            </h2>
+
+            <p>
+                Your table has been successfully reserved.
+            </p>
+
+            <div class="confirmation-number">
+
+                Reservation ID
+
+                <strong id="reservationId">
+                    SAV-000000
+                </strong>
+
+            </div>
+
+            <div
+                class="confirmation-details"
+                id="confirmationDetails">
+            </div>
+
+            <button
+                onclick="closeSuccess()"
+                class="done-btn">
+
+                Done
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="toast"
+        id="toast">
+    </div>
+
+
+    <script src="js/reservation.js"></script>
+
+</body>
+
+</html>

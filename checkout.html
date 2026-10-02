@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Savora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        <span>🍽️</span> Savora
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="reservation.html">Reservation</a>
+        <a href="checkout.html" class="active">Orders</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn">🌙</button>
+
+        <a href="menu.html" class="cart-btn">
+            🛒 <span id="cartCount">0</span>
+        </a>
+    </div>
+
+</header>
+
+
+<section class="checkout-hero">
+
+    <div class="hero-content">
+        <span>🍴 SAVORA RESTAURANT</span>
+        <h1>Complete Your Order</h1>
+        <p>Fresh food, simple ordering and a delightful dining experience.</p>
+    </div>
+
+</section>
+
+
+<main class="checkout-container">
+
+    <div class="checkout-main">
+
+        <!-- ORDER TYPE -->
+
+        <section class="checkout-card">
+
+            <div class="section-title">
+                <div>
+                    <span class="small-label">STEP 1</span>
+                    <h2>Choose Order Type</h2>
+                </div>
+            </div>
+
+            <div class="order-type">
+
+                <button class="type-btn active" data-type="delivery">
+                    <span class="type-icon">🛵</span>
+                    <div>
+                        <strong>Delivery</strong>
+                        <small>Delivered to your address</small>
+                    </div>
+                </button>
+
+                <button class="type-btn" data-type="pickup">
+                    <span class="type-icon">🏃</span>
+                    <div>
+                        <strong>Pickup</strong>
+                        <small>Collect from Savora</small>
+                    </div>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <section class="checkout-card">
+
+            <div class="section-title">
+                <div>
+                    <span class="small-label">STEP 2</span>
+                    <h2>Customer Details</h2>
+                </div>
+            </div>
+
+            <form id="checkoutForm">
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+                        <label>Full Name *</label>
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter your name"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label>Phone Number *</label>
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="10-digit mobile number"
+                            pattern="[0-9]{10}"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input
+                            type="email"
+                            id="customerEmail"
+                            placeholder="you@example.com"
+                        >
+                    </div>
+
+                </div>
+
+
+                <div id="deliveryAddress">
+
+                    <div class="address-heading">
+                        <h3>📍 Delivery Address</h3>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Complete Address *</label>
+                        <textarea
+                            id="address"
+                            rows="3"
+                            placeholder="House number, street, area..."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+                            <label>City</label>
+                            <input
+                                type="text"
+                                id="city"
+                                value="Bengaluru"
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label>PIN Code</label>
+                            <input
+                                type="text"
+                                id="pincode"
+                                placeholder="6-digit PIN"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- PAYMENT -->
+
+        <section class="checkout-card">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="small-label">STEP 3</span>
+                    <h2>Payment Method</h2>
+                </div>
+
+            </div>
+
+            <div class="payment-methods">
+
+                <label class="payment-option active">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="UPI"
+                        checked
+                    >
+
+                    <span class="payment-icon">📱</span>
+
+                    <div>
+                        <strong>UPI</strong>
+                        <small>Google Pay, PhonePe, Paytm</small>
+                    </div>
+
+                </label>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Card"
+                    >
+
+                    <span class="payment-icon">💳</span>
+
+                    <div>
+                        <strong>Card</strong>
+                        <small>Credit or Debit Card</small>
+                    </div>
+
+                </label>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Cash on Delivery"
+                    >
+
+                    <span class="payment-icon">💵</span>
+
+                    <div>
+                        <strong>Cash on Delivery</strong>
+                        <small>Pay when your order arrives</small>
+                    </div>
+
+                </label>
+
+            </div>
+
+            <p class="demo-note">
+                🔒 This is a front-end demonstration. No real payment will be processed.
+            </p>
+
+        </section>
+
+    </div>
+
+
+    <!-- ORDER SUMMARY -->
+
+    <aside class="order-summary">
+
+        <div class="summary-header">
+            <div>
+                <span class="small-label">YOUR CART</span>
+                <h2>Order Summary</h2>
+            </div>
+
+            <span id="summaryItemCount">0 items</span>
+        </div>
+
+
+        <div id="cartItems" class="cart-items">
+            <!-- Cart items inserted by JavaScript -->
+        </div>
+
+
+        <!-- COUPON -->
+
+        <div class="coupon-box">
+
+            <label>Have a coupon?</label>
+
+            <div class="coupon-input">
+
+                <input
+                    type="text"
+                    id="couponCode"
+                    placeholder="Enter coupon code"
+                >
+
+                <button id="applyCoupon">Apply</button>
+
+            </div>
+
+            <p id="couponMessage"></p>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="price-summary">
+
+            <div>
+                <span>Subtotal</span>
+                <strong id="subtotal">₹0.00</strong>
+            </div>
+
+            <div>
+                <span>Discount</span>
+                <strong id="discount">-₹0.00</strong>
+            </div>
+
+            <div>
+                <span>Delivery</span>
+                <strong id="deliveryCharge">₹40.00</strong>
+            </div>
+
+            <div>
+                <span>GST (5%)</span>
+                <strong id="gst">₹0.00</strong>
+            </div>
+
+            <hr>
+
+            <div class="grand-total">
+                <span>Total</span>
+                <strong id="grandTotal">₹0.00</strong>
+            </div>
+
+        </div>
+
+
+        <button id="placeOrderBtn" class="place-order-btn">
+            Place Order →
+        </button>
+
+        <a href="menu.html" class="continue-shopping">
+            ← Continue Shopping
+        </a>
+
+    </aside>
+
+</main>
+
+
+<!-- SUCCESS MODAL -->
+
+<div id="successOverlay" class="modal-overlay">
+
+    <div class="success-modal">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <span class="success-label">ORDER CONFIRMED</span>
+
+        <h2>Thank You!</h2>
+
+        <p>Your order has been successfully placed.</p>
+
+        <div class="order-id-box">
+
+            <span>ORDER ID</span>
+
+            <strong id="generatedOrderId">
+                SAV-ORD-000000
+            </strong>
+
+        </div>
+
+        <div class="success-details">
+
+            <div>
+                <span>Total Amount</span>
+                <strong id="successTotal">₹0.00</strong>
+            </div>
+
+            <div>
+                <span>Payment</span>
+                <strong id="successPayment">UPI</strong>
+            </div>
+
+        </div>
+
+        <button
+            id="continueBtn"
+            class="success-btn"
+        >
+            Continue to Menu
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script src="js/checkout.js"></script>
+
+</body>
+</html>

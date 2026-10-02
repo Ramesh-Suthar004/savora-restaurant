@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Savora | Menu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Savora<span>.</span>
+            </a>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="menu.html" class="active">Menu</a>
+                <a href="reservation.html">Reservation</a>
+                <a href="orders.html">Orders</a>
+            </nav>
+
+            <div class="nav-actions">
+
+                <button onclick="toggleTheme()" class="icon-btn">
+                    🌙
+                </button>
+
+                <button onclick="openCart()" class="cart-btn">
+                    🛒
+                    <span id="cartCount">0</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <div>
+
+            <p class="small-title">
+                OUR MENU
+            </p>
+
+            <h1>
+                Discover Something
+                <span>Delicious.</span>
+            </h1>
+
+            <p class="header-description">
+                Explore our carefully prepared dishes made with
+                fresh ingredients and authentic flavours.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH AND FILTER -->
+
+    <section class="menu-section">
+
+        <div class="menu-controls">
+
+            <div class="search-box">
+
+                <span>🔍</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search for dishes..."
+                    onkeyup="displayFoods()"
+                >
+
+            </div>
+
+
+            <select id="sortSelect" onchange="displayFoods()">
+
+                <option value="default">
+                    Sort By
+                </option>
+
+                <option value="low">
+                    Price: Low to High
+                </option>
+
+                <option value="high">
+                    Price: High to Low
+                </option>
+
+                <option value="rating">
+                    Highest Rated
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+
+        <div class="category-buttons">
+
+            <button
+                class="category-btn active"
+                onclick="filterCategory('All', this)">
+                All
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Pizza', this)">
+                🍕 Pizza
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Burger', this)">
+                🍔 Burgers
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Pasta', this)">
+                🍝 Pasta
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Asian', this)">
+                🍜 Asian
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Dessert', this)">
+                🍰 Desserts
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Drinks', this)">
+                🥤 Drinks
+            </button>
+
+        </div>
+
+
+        <!-- FOOD GRID -->
+
+        <div class="food-grid" id="foodGrid"></div>
+
+        <div id="noResults" class="no-results">
+
+            <div>🍽️</div>
+
+            <h2>
+                No dishes found
+            </h2>
+
+            <p>
+                Try searching for something else.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOD DETAILS MODAL -->
+
+    <div class="modal-overlay" id="foodModal">
+
+        <div class="food-modal">
+
+            <button
+                class="close-btn"
+                onclick="closeFoodModal()">
+                ×
+            </button>
+
+            <img id="modalImage" src="" alt="Food">
+
+            <div class="modal-content">
+
+                <div class="modal-category" id="modalCategory">
+                </div>
+
+                <h2 id="modalName">
+                </h2>
+
+                <div class="modal-rating" id="modalRating">
+                </div>
+
+                <p id="modalDescription">
+                </p>
+
+                <div class="ingredients">
+
+                    <strong>
+                        Ingredients
+                    </strong>
+
+                    <p id="modalIngredients">
+                    </p>
+
+                </div>
+
+                <div class="modal-bottom">
+
+                    <div
+                        class="modal-price"
+                        id="modalPrice">
+                    </div>
+
+                    <div class="quantity-control">
+
+                        <button onclick="changeModalQuantity(-1)">
+                            −
+                        </button>
+
+                        <span id="modalQuantity">
+                            1
+                        </span>
+
+                        <button onclick="changeModalQuantity(1)">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="modal-add-btn"
+                    onclick="addModalToCart()">
+
+                    Add to Cart 🛒
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CART DRAWER -->
+
+    <div
+        class="cart-overlay"
+        id="cartOverlay"
+        onclick="closeCart(event)">
+
+        <div
+            class="cart-drawer"
+            onclick="event.stopPropagation()">
+
+            <div class="cart-header">
+
+                <h2>
+                    Your Cart 🛒
+                </h2>
+
+                <button onclick="closeCart()">
+                    ×
+                </button>
+
+            </div>
+
+            <div
+                id="cartItems"
+                class="cart-items">
+            </div>
+
+            <div class="cart-footer">
+
+                <div class="cart-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="cartTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+                <button
+                    class="checkout-btn"
+                    onclick="goToCheckout()">
+
+                    Proceed to Checkout →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast">
+    </div>
+
+    <script src="./js/menu.js?v=100"></script>
+
+</body>
+
+</html>
